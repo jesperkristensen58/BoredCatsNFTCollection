@@ -1,0 +1,31 @@
+{
+	"image": "ipfs://QmU5g1rtVsDww3m6uAxw4EKFBFKTXxiUo71SqLCHLu5Vyz/3",
+	"name": "Bitkit",
+	"attributes": [
+		{
+			"trait_type": "Sunglasses",
+			"value": "No"
+		},
+		{
+			"trait_type": "Fur",
+			"value": "Yellow"
+		},
+		{
+			"trait_type": "Background",
+			"value": "Blue"
+		},
+		{
+			"trait_type": "Nationality",
+			"value": "Metaverse"
+		},
+		{
+			"trait_type": "MouseKills",
+			"value": "1"
+		},
+		{
+			"display_type": "boost_percentage", 
+			"trait_type": "Hunting Skill Level", 
+			"value": 1
+		}
+	]
+}
