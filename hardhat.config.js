@@ -5,11 +5,14 @@ require('dotenv').config()
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.16",
-  defaultNetwork: "matic",
+  defaultNetwork: "rinkeby",
   networks: {
-      hardhat: {},
       matic: {
-        url: "https://polygon-mainnet.g.alchemy.com/v2/" + process.env.ALCHEMY_URL,
+        url: "https://polygon-mainnet.g.alchemy.com/v2/" + process.env.ALCHEMY_POLYGON_MAINNET_API_KEY,
+        accounts: [process.env.PRIVATE_KEY],
+      },
+      rinkeby: {
+        url: "https://eth-goerli.g.alchemy.com/v2/" + process.env.ALCHEMY_RINKEBY_API_KEY,
         accounts: [process.env.PRIVATE_KEY],
       }
   },
@@ -20,6 +23,6 @@ module.exports = {
     },
   },
   etherscan: {
-    apiKey: "DZPE8JI3M8BMBHF9P2FZATYITB2RTVAZAV",
+    apiKey: process.env.ETHERSCAN_API_KEY
   },
 };
