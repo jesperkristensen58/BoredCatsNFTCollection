@@ -9,6 +9,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
  */
 contract BoredCats is ERC721 {
 
+    string private baseURI = "QmaZ9xaXHEYykWg1iK3Q6N4P88jcjcHr6bZ1g5onkuopzE"; // the base URI of the metadata of our collection
     uint256 public constant MAX_SUPPLY = 10;
     address immutable deployer;  // do not use Ownable, we don't want to transfer ownership ever
     uint256 public tokenSupply = 0;
@@ -57,10 +58,20 @@ contract BoredCats is ERC721 {
     }
 
     /**
+     * @notice Change the base URI of this NFT collection.
+     * @param newURI The new base URI of this NFT collection.
+     */
+    function changeBaseURI(string calldata newURI) external onlyOwner {
+        // WARNING: This will change the base URI of the collection
+        // and the metadata that it points to. Use with CAUTION.
+        baseURI = newURI;
+    }
+
+    /**
      * @notice the Base URI of our Collection hosted on IPFS.
      * @dev Pinata and IPFS Desktop were used to confirm the hash.
      */
-    function _baseURI() internal pure override returns (string memory) {
-        return "ipfs://QmaZ9xaXHEYykWg1iK3Q6N4P88jcjcHr6bZ1g5onkuopzE/";
+    function _baseURI() internal view override returns (string memory) {
+        return string.concat("ipfs://", baseURI, "/");
     }
 }
