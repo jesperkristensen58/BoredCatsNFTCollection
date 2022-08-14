@@ -35,4 +35,25 @@ Then verified with:
     Successfully verified contract BoredCats on Etherscan.
     https://goerli.etherscan.io/address/0x3Da3752a9fc4Ac65F1ADfeb4E108c75a5e8dcCD1#code
 
+Then I deployed to Rinkeby:
+
+    npx hardhat run scripts/deploy.js
+
+    Compiled 1 Solidity file successfully
+    BoredCats deployed to 0x9047A22Ca6f9121d0edF1E7F855A0606dbC0CdA1
+
+Now I verified:
+
+    npx hardhat verify --network rinkeby 0x9047A22Ca6f9121d0edF1E7F855A0606dbC0CdA1
+
+    Nothing to compile
+    Successfully submitted source code for contract
+    contracts/BoredCats.sol:BoredCats at 0x9047A22Ca6f9121d0edF1E7F855A0606dbC0CdA1
+    for verification on the block explorer. Waiting for verification result...
+
+    Successfully verified contract BoredCats on Etherscan.
+    https://rinkeby.etherscan.io/address/0x9047A22Ca6f9121d0edF1E7F855A0606dbC0CdA1#code
+
+Then I went onto Rinkeby's Etherscan and minted an NFT directly from etherscan myself using the write to the contract functionality. I confirmed the NFT was minted via the transaction details and also by interacting with the read part of Etherscan.
+
 That was it!

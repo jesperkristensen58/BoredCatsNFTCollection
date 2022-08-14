@@ -4,38 +4,10 @@ pragma solidity 0.8.16;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 /**
- * @notice We use this Mixin because we are deploying on Polygon's network for OpenSea.
- * @dev See this: https://docs.opensea.io/docs/polygon-basic-integration
- * @dev From: https://github.com/maticnetwork/pos-portal/blob/master/contracts/common/ContextMixin.sol
- */
-abstract contract ContextMixin {
-    function msgSender()
-        internal
-        view
-        returns (address payable sender)
-    {
-        if (msg.sender == address(this)) {
-            bytes memory array = msg.data;
-            uint256 index = msg.data.length;
-            assembly {
-                // Load the 32 bytes word from memory with the address on the lower 20 bytes, and mask those.
-                sender := and(
-                    mload(add(array, index)),
-                    0xffffffffffffffffffffffffffffffffffffffff
-                )
-            }
-        } else {
-            sender = payable(msg.sender);
-        }
-        return sender;
-    }
-}
-
-/**
  * @notice The BoredCats NFT Collection.
  * @author Jesper Kristensen
  */
-contract BoredCats is ERC721, ContextMixin {
+contract BoredCats is ERC721 {
 
     uint256 public constant MAX_SUPPLY = 10;
     address immutable deployer;  // do not use Ownable, we don't want to transfer ownership ever
@@ -43,18 +15,6 @@ contract BoredCats is ERC721, ContextMixin {
     
     constructor() ERC721("BoredCats", "BC") {
         deployer = msg.sender;
-    }
-
-    /**
-     * This is used instead of msg.sender as transactions won't be sent by the original token owner, but by OpenSea.
-     */
-    function _msgSender()
-        internal
-        override
-        view
-        returns (address sender)
-    {
-        return ContextMixin.msgSender();
     }
 
     /**
@@ -102,22 +62,5 @@ contract BoredCats is ERC721, ContextMixin {
      */
     function _baseURI() internal pure override returns (string memory) {
         return "ipfs://QmaZ9xaXHEYykWg1iK3Q6N4P88jcjcHr6bZ1g5onkuopzE/";
-    }
-
-    /**
-    * @notice Override isApprovedForAll to auto-approve OS's proxy contract
-    */
-    function isApprovedForAll(
-        address _owner,
-        address _operator
-    ) public override view returns (bool isOperator) {
-      // if OpenSea's ERC721 Proxy Address is detected, auto-return true
-      // for Polygon's Mumbai testnet, use 0xff7Ca10aF37178BdD056628eF42fD7F799fAc77c
-        if (_operator == address(0x58807baD0B376efc12F5AD86aAc70E78ed67deaE)) {
-            return true;
-        }
-        
-        // otherwise, use the default ERC721.isApprovedForAll()
-        return ERC721.isApprovedForAll(_owner, _operator);
     }
 }
