@@ -101,7 +101,7 @@ contract BoredCats is ERC721, ContextMixin {
      * @dev Pinata and IPFS Desktop were used to confirm the hash.
      */
     function _baseURI() internal pure override returns (string memory) {
-        return "ipfs://QmYcBvZQyg6gwb4EBRAy3Yvuvs3JeHWsorWaeoCF4TbL7N/";
+        return "ipfs://QmaZ9xaXHEYykWg1iK3Q6N4P88jcjcHr6bZ1g5onkuopzE/";
     }
 
     /**
