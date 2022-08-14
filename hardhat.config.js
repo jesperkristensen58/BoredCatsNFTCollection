@@ -11,7 +11,7 @@ module.exports = {
         url: "https://polygon-mainnet.g.alchemy.com/v2/" + process.env.ALCHEMY_POLYGON_MAINNET_API_KEY,
         accounts: [process.env.PRIVATE_KEY],
       },
-      rinkeby: {
+      goerli: {
         url: "https://eth-goerli.g.alchemy.com/v2/" + process.env.ALCHEMY_RINKEBY_API_KEY,
         accounts: [process.env.PRIVATE_KEY],
       }
