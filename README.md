@@ -57,3 +57,10 @@ Now I verified:
 Then I went onto Rinkeby's Etherscan and minted an NFT directly from etherscan myself using the write to the contract functionality. I confirmed the NFT was minted via the transaction details and also by interacting with the read part of Etherscan.
 
 That was it!
+
+## Contact
+[![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/cryptojesperk.svg?style=social&label=Follow%20%40cryptojesperk)](https://twitter.com/cryptojesperk)
+
+
+## License
+This project uses the following license: [MIT](https://github.com/bisguzar/twitter-scraper/blob/master/LICENSE).
