@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 /**
  * @notice The BoredCats NFT Collection.
- * @author Jesper Kristensen
+ * @author Jesper Kristensen (@cryptojesperk)
  */
 contract BoredCats is ERC721 {
 

@@ -1,5 +1,9 @@
 <h1>Welcome to the Bored Cats Collection</h1>
 
+This is a demonstration on how to create and deploy an NFT collection using IPFS.
+
+<h2> Deployment Details</h2>
+
 I deployed this to the Polygon Mainnet. The deployment went like this:
 
     npx hardhat run scripts/deploy.js --network matic
